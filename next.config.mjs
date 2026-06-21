@@ -20,7 +20,7 @@ const nextConfig = {
 
   experimental: {
     // Enable partial prerendering for faster loads
-    // ppr: true, // Only available in canary
+    // // Only available in canary
     // Optimize bundling
     optimizePackageImports: [
       "lucide-react",
