@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
-import { Logo } from "../Logo";
+import { Logo } from "@/components/Logo";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 
 type NavItem = {
@@ -35,23 +35,23 @@ export const MobileNavbar = ({ navItems }: Props) => {
   return (
     <div
       className={cn(
-        "flex justify-between bg-white items-center w-full rounded-full px-2.5 py-1.5 transition duration-200",
+        "flex justify-between bg-zinc-950 items-center w-full px-4 py-3 border-b border-orange-500/30 transition duration-200",
         showBackground &&
-          "bg-neutral-50 shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)]",
+          "bg-zinc-950 shadow-[0_2px_20px_0_rgba(249,115,22,0.25)]",
       )}
     >
       <Logo />
       <IoIosMenu
-        className="h-6 w-6 bg-black text-black"
+        className="h-6 w-6 text-orange-500"
         onClick={() => setOpen(!open)}
       />
       {open && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col items-start justify-start space-y-10 pt-5 text-xl text-zinc-600 transition duration-200 hover:text-zinc-800">
+        <div className="fixed inset-0 bg-zinc-950 z-50 flex flex-col items-start justify-start space-y-10 pt-5 text-xl text-zinc-300 transition duration-200">
           <div className="flex items-center justify-between w-full px-5">
             <Logo />
             <div className="flex items-center space-x-2">
               <IoIosClose
-                className="h-8 w-8 text-black"
+                className="h-8 w-8 text-orange-500"
                 onClick={() => setOpen(!open)}
               />
             </div>
@@ -64,9 +64,9 @@ export const MobileNavbar = ({ navItems }: Props) => {
                     key={`${navItem.title}-${childNavItem.title}`}
                     href={childNavItem.link}
                     onClick={() => setOpen(false)}
-                    className="relative max-w-[15rem] text-left text-2xl"
+                    className="relative max-w-[15rem] text-left text-2xl hover:text-orange-400 transition-colors"
                   >
-                    <span className="block text-black ">
+                    <span className="block text-orange-500 font-semibold">
                       {childNavItem.title}
                     </span>
                   </Link>
@@ -76,12 +76,12 @@ export const MobileNavbar = ({ navItems }: Props) => {
                   key={navItem.title}
                   href={navItem.link}
                   onClick={() => setOpen(false)}
-                  className="relative"
-                >
-                  <span className="block text-[26px] text-black ">
-                    {navItem.title}
-                  </span>
-                </Link>
+                    className="relative hover:text-orange-400 transition-colors"
+                  >
+                    <span className="block text-[26px] text-orange-500 font-semibold">
+                      {navItem.title}
+                    </span>
+                  </Link>
               ),
             )}
           </div>

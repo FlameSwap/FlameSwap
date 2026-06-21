@@ -1,19 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { Container } from "@/components/container";
 import Link from "next/link";
 import { KleapForm } from "@/components/kleap-form";
 
 const clothingItems = [
-  { id: 1, title: "Vintage Denim Jacket", size: "M", condition: "Great", owner: "Priya S.", image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400&h=400&fit=crop", tags: ["Jackets", "Unisex"] },
-  { id: 2, title: "Graphic Band Tee", size: "L", condition: "Like New", owner: "Alex K.", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop", tags: ["Tops", "Music"] },
-  { id: 3, title: "High-Waist Mom Jeans", size: "28", condition: "Good", owner: "Jordan M.", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop", tags: ["Bottoms", "Vintage"] },
-  { id: 4, title: "Cozy Oversized Hoodie", size: "XL", condition: "Great", owner: "Sam T.", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop", tags: ["Hoodies", "Unisex"] },
-  { id: 5, title: "Pleated Midi Skirt", size: "S", condition: "Like New", owner: "Riley B.", image: "https://images.unsplash.com/photo-1583496661160-fb5886a0uj75?w=400&h=400&fit=crop", tags: ["Skirts", "Trendy"] },
-  { id: 6, title: "Classic Leather Belt", size: "M", condition: "Good", owner: "Chris L.", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop", tags: ["Accessories", "Vintage"] },
+  { id: 1, title: "Vintage Denim Jacket", size: "M", condition: "Great", owner: "Priya Sharma", image: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&h=400&fit=crop", tags: ["Jackets", "Unisex"] },
+  { id: 2, title: "Graphic Band Tee", size: "L", condition: "Like New", owner: "Arjun Kapoor", image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop", tags: ["Tops", "Music"] },
+  { id: 3, title: "High-Waist Mom Jeans", size: "28", condition: "Good", owner: "Aarav Mehta", image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop", tags: ["Bottoms", "Vintage"] },
+  { id: 4, title: "Cozy Oversized Hoodie", size: "XL", condition: "Great", owner: "Saanvi Tiwari", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop", tags: ["Hoodies", "Unisex"] },
+  { id: 5, title: "Pleated Midi Skirt", size: "S", condition: "Like New", owner: "Riya Bansal", image: "https://images.unsplash.com/photo-1583496661160-fb5886a0uj75?w=400&h=400&fit=crop", tags: ["Skirts", "Trendy"] },
+  { id: 6, title: "Classic Leather Belt", size: "M", condition: "Good", owner: "Krish Luthra", image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=400&h=400&fit=crop", tags: ["Accessories", "Vintage"] },
 ];
 
 export default function Home() {
+  const [listingImage, setListingImage] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white">
       <section className="relative bg-gradient-to-br from-orange-950 via-zinc-900 to-red-950 py-20 md:py-32">
@@ -99,7 +102,32 @@ export default function Home() {
           <div className="max-w-xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-4">List Your Clothes</h2>
             <p className="text-gray-400 text-center mb-8">Fill out this form to add your items to the exchange</p>
-            <div className="rounded-2xl p-8 bg-zinc-800/50 border border-zinc-700">
+            <div className="rounded-2xl p-6 sm:p-8 bg-[#141414] border border-orange-500/30 shadow-[0_0_40px_-15px_rgba(249,115,22,0.5)]">
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-white mb-2">Photo of Your Item</label>
+                <div className="relative">
+                  {listingImage ? (
+                    <div className="relative">
+                      <img src={listingImage} alt="Item preview" className="w-full h-64 object-cover rounded-lg border border-orange-500/30" />
+                      <button type="button" onClick={() => setListingImage(null)} className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">×</button>
+                    </div>
+                  ) : (
+                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-orange-500/40 rounded-lg cursor-pointer bg-zinc-900 hover:bg-zinc-800 transition-colors">
+                      <svg className="w-10 h-10 text-orange-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                      <span className="text-orange-400 font-medium">Click to upload a photo</span>
+                      <span className="text-gray-500 text-xs mt-1">PNG, JPG up to 10MB</span>
+                      <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onload = (ev) => setListingImage(ev.target?.result as string);
+                          reader.readAsDataURL(file);
+                        }
+                      }} />
+                    </label>
+                  )}
+                </div>
+              </div>
               <KleapForm
                 formId="clothing-list"
                 title="List Your Clothes"

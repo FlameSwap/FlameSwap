@@ -8,7 +8,8 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
-console.log("\n🔧 [PREBUILD] Starting Vercel preparation script...");
+console.log("
+🔧 [PREBUILD] Starting Vercel preparation script...");
 console.log("📋 Environment:", {
   VERCEL: process.env.VERCEL,
   NEXT_PUBLIC_VERCEL: process.env.NEXT_PUBLIC_VERCEL,
@@ -17,7 +18,8 @@ console.log("📋 Environment:", {
 
 // Seulement sur Vercel
 if (process.env.VERCEL === "1" || process.env.NEXT_PUBLIC_VERCEL === "1") {
-  console.log("✅ Running on Vercel - preparing for build...\n");
+  console.log("✅ Running on Vercel - preparing for build...
+");
 
   // Install Tailwind CSS v4 for Vercel build (per official docs)
   console.log("📦 Installing Tailwind CSS v4 packages...");
@@ -30,7 +32,8 @@ if (process.env.VERCEL === "1" || process.env.NEXT_PUBLIC_VERCEL === "1") {
         stdio: "inherit",
       },
     );
-    console.log("✅ Tailwind CSS v4 installed with lightningcss bindings\n");
+    console.log("✅ Tailwind CSS v4 installed with lightningcss bindings
+");
   } catch (error) {
     console.error("❌ Failed to install Tailwind CSS:", error.message);
     process.exit(1);
@@ -68,17 +71,23 @@ export function TailwindCDNLoader() {
     fs.writeFileSync(loaderPath, emptyComponent);
     const newSize = emptyComponent.length;
 
-    console.log("\n📊 Results:");
+    console.log("
+📊 Results:");
     console.log("   - Original size:", originalSize, "bytes");
     console.log("   - New size:", newSize, "bytes");
     console.log("   - Removed:", originalSize - newSize, "bytes");
-    console.log("\n✅ SUCCESS! CDN code removed from tailwind-cdn-loader.tsx");
-    console.log("🚀 Vercel build will use compiled Tailwind v4 (no CDN)\n");
+    console.log("
+✅ SUCCESS! CDN code removed from tailwind-cdn-loader.tsx");
+    console.log("🚀 Vercel build will use compiled Tailwind v4 (no CDN)
+");
   } catch (error) {
-    console.log("\n❌ ERROR:", error.message);
-    console.log("   Build will continue but CDN might be present\n");
+    console.log("
+❌ ERROR:", error.message);
+    console.log("   Build will continue but CDN might be present
+");
   }
 } else {
   console.log("⏭️  Not on Vercel - skipping CDN removal");
-  console.log("   (CDN will be used for CodeSandbox development)\n");
+  console.log("   (CDN will be used for CodeSandbox development)
+");
 }

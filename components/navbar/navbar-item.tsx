@@ -14,7 +14,7 @@ export function NavBarItem({
   children,
   href,
   target,
-  className = "flex items-center justify-center text-sm leading-[110%] px-4 py-2 rounded-md hover:bg-[#F5F5F5] hover:text-black text-neutral-700",
+  className = "flex items-center justify-center text-sm font-semibold leading-[110%] px-4 py-2 rounded-md text-orange-500 hover:text-orange-400 hover:bg-orange-500/10 transition-colors",
 }: Props) {
   return (
     <Link href={href} className={className} target={target}>

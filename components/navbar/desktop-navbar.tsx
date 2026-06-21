@@ -34,9 +34,9 @@ export const DesktopNavbar = ({ navItems }: Props) => {
   return (
     <div
       className={cn(
-        "w-full flex relative justify-between px-4 py-2 rounded-full bg-white/80 backdrop-blur-md transition duration-200",
+        "w-full flex relative justify-between px-6 py-3 bg-zinc-950 border-b border-orange-500/30 transition duration-200",
         showBackground &&
-          "bg-white shadow-[0px_-2px_0px_0px_var(--neutral-100),0px_2px_0px_0px_var(--neutral-100)]",
+          "bg-zinc-950 shadow-[0_2px_20px_0_rgba(249,115,22,0.25)]",
       )}
     >
       <AnimatePresence>
@@ -48,7 +48,7 @@ export const DesktopNavbar = ({ navItems }: Props) => {
             transition={{
               duration: 1,
             }}
-            className="absolute inset-0 h-full w-full bg-neutral-100 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
+            className="absolute inset-0 h-full w-full bg-gradient-to-r from-orange-500/5 via-red-500/5 to-orange-500/5 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
           />
         )}
       </AnimatePresence>

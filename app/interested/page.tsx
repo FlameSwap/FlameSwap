@@ -14,8 +14,8 @@ export default function InterestedPage() {
         Back to Browse
       </Link>
       
-      <div className="max-w-xl mx-auto bg-white text-black">
-        <Heading>Express Interest</Heading>
+      <div className="max-w-xl mx-auto bg-[#141414] border border-orange-500/30 rounded-2xl p-6 sm:p-8 shadow-[0_0_40px_-15px_rgba(249,115,22,0.5)]">
+        <Heading className="text-orange-500">Express Interest</Heading>
         <Subheading className="mb-8">
           Manav Rachna International School, Sector 14, Faridabad, Haryana, India
         </Subheading>

@@ -7,10 +7,10 @@ export const Logo = () => {
   return (
     <Link
       href="/"
-      className="font-normal flex space-x-2 items-center text-sm mr-4  text-black px-2 py-1  relative z-20"
+      className="font-normal flex space-x-2 items-center text-sm mr-4 px-2 py-1 relative z-20"
     >
-      <div className="h-5 w-6 bg-black rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm" />
-      <span className="font-medium bg-white text-black">{siteConfig.name}</span>
+      <div className="h-5 w-6 rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm bg-orange-500" />
+      <span className="font-bold text-orange-500 text-base">{siteConfig.name}</span>
     </Link>
   );
 };

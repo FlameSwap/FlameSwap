@@ -7,10 +7,11 @@ export default function AboutPage() {
     <main className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
       {/* Hero Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500/10 via-red-500/5 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" />
         <Container className="relative">
           <div className="max-w-4xl mx-auto text-center">
-            <Heading className="text-5xl md:text-6xl mb-6">About the Founder</Heading>
+            <Heading className="text-5xl md:text-6xl mb-6 bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">About the Founder</Heading>
             <Subheading className="text-xl text-zinc-400">
               The vision behind FlameSwap
             </Subheading>
@@ -25,7 +26,8 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               {/* Photo */}
               <div className="relative">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-zinc-800">
+                <div className="absolute -inset-4 bg-gradient-to-br from-orange-500/30 to-red-500/30 rounded-3xl blur-2xl" />
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.2)]">
                   <img
                     src="https://lrggyvioreorxttbasgi.supabase.co/storage/v1/object/public/app-assets/22992/images/1780199792312-Screenshot_2026-05-31_085054.png"
                     alt="Maan Ajay Sharma - Founder of FlameSwap"
@@ -40,9 +42,14 @@ export default function AboutPage() {
               {/* Content */}
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-4xl font-bold mb-2">Maan Ajay Sharma</h2>
-                  <p className="text-orange-500 text-lg">Founder & Creator, FlameSwap</p>
-                  <p className="text-zinc-400 mt-2">Class 9 Student, Manav Rachna International School</p>
+                  <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-orange-500 uppercase border border-orange-500/30 rounded-full bg-orange-500/5">
+                    Meet the Founder
+                  </div>
+                  <h2 className="text-5xl font-bold mb-3 bg-gradient-to-r from-orange-500 via-orange-400 to-red-500 bg-clip-text text-transparent">
+                    Maan Ajay Sharma
+                  </h2>
+                  <p className="text-orange-500 text-lg font-medium">Founder & Creator, FlameSwap</p>
+                  <p className="text-zinc-400 mt-2">Class 9 Student · Manav Rachna International School, Sector 14, Faridabad</p>
                 </div>
 
                 <div className="h-px bg-gradient-to-r from-orange-500/50 via-zinc-700 to-transparent" />

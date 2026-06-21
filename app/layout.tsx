@@ -190,7 +190,7 @@ export default function RootLayout({
       <body
         className={cn(
           "font-sans",
-          "bg-white antialiased h-full w-full",
+          "bg-[#0a0a0a] text-white antialiased h-full w-full",
         )}
         suppressHydrationWarning // Prevents browser extension conflicts
       >

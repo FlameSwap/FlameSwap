@@ -123,7 +123,8 @@
       .then((stackFrames) => {
         const sourcemappedStack = stackFrames
           .map((sf) => sf.toString())
-          .join("\n");
+          .join("
+");
 
         const payload = {
           message: error?.message || String(error),
@@ -148,8 +149,11 @@
           message: error?.message || String(error),
           // Provide the raw stack or an indication of mapping failure
           stack: error?.stack
-            ? `Sourcemapping failed: ${mappingError.message}\n--- Raw Stack ---\n${error.stack}`
-            : `Sourcemapping failed: ${mappingError.message}\n<no raw stack available>`,
+            ? `Sourcemapping failed: ${mappingError.message}
+--- Raw Stack ---
+${error.stack}`
+            : `Sourcemapping failed: ${mappingError.message}
+<no raw stack available>`,
         };
 
         window.parent.postMessage(
